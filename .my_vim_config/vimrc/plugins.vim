@@ -1,6 +1,6 @@
 " Load pathogen paths
-call pathogen#infect('~/.my_vim_config/bundle/forked/{}')
-call pathogen#infect('~/.my_vim_config/bundle/pristine/{}')
+call pathogen#infect('~/myconf/.my_vim_config/bundle/forked/{}')
+call pathogen#infect('~/myconf/.my_vim_config/bundle/pristine/{}')
 call pathogen#helptags()
 
 "------------------------------------------------------------------------------
@@ -120,3 +120,7 @@ let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 let g:airline#extensions#tabline#enabled = 1
+
+if executable('ag')
+      let g:ackprg = "ag --nocolor --nogroup --column"
+endif
