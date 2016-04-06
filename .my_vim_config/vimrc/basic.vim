@@ -43,7 +43,7 @@ nnoremap JJJJ <nop>
 set so=999
 
 " add vertical lines on columns
-set colorcolumn=80,120
+set colorcolumn=120
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
@@ -259,9 +259,9 @@ map <leader>bda :1,1000 bd!<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>tj :tabnext
-map <leader>tk :tabprevious
+map <leader>tm :tabmove<cr>
+map <leader>tj :tabnext<cr>
+map <leader>tk :tabprevious<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
