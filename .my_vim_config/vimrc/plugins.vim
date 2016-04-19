@@ -120,6 +120,7 @@ let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='papercolor'
 
 if executable('ag')
       let g:ackprg = "ag --nocolor --nogroup --column"
