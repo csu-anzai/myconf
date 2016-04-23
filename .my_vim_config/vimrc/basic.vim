@@ -135,7 +135,7 @@ set nrformats=octal,hex,alpha
 syntax enable
 
 try
-    colorscheme clearance
+    colorscheme jellybeans
 catch
 endtry
 

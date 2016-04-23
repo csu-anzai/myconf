@@ -7,7 +7,7 @@ call pathogen#helptags()
 " Custom color scheme
 "------------------------------------------------------------------------------
 try
-    colorscheme clearance
+    colorscheme jellybeans
 catch
 endtry
 
