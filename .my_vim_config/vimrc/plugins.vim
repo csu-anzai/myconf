@@ -34,7 +34,6 @@ map <leader>T :NERDTreeFind<cr>
 
 " Toogle on/off
 nmap <leader>o :NERDTreeToggle<cr>
-map <F3> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------------------------
 " BufExplorer
