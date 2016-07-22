@@ -45,6 +45,8 @@ set so=999
 " add vertical lines on columns
 set colorcolumn=120
 
+set clipboard=unnamedplus
+
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
@@ -395,6 +397,11 @@ map <F2> :setlocal paste!<cr>
 " easy way to edit reload .vimrc
 nmap <leader>V :source $MYVIMRC<cr>
 nmap <leader>v :vsp $MYVIMRC<cr>
+
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 "------------------------------------------------------------------------------
 " Helper functions
