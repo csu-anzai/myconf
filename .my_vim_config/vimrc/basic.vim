@@ -75,6 +75,8 @@ set ruler
 " Show line numbers - could be toggled on/off on-fly by pressing F6
 set number
 
+set relativenumber
+
 " Show (partial) commands (or size of selection in Visual mode) in the status line
 set showcmd
 
