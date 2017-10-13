@@ -125,6 +125,10 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set foldenable
+set foldmethod=syntax
+set foldnestmax=3
+set foldlevel=1
 " Make sure that extra margin on left is removed
 set foldcolumn=0
 
