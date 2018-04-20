@@ -74,8 +74,8 @@ map <leader>gdi :Gdiff<cr>
 map <leader>gst :Gstatus<cr>
 map <leader>dup :diffupdate<cr>
 
-if executable('ag')
-      let g:ackprg = "ag --nocolor --nogroup --column --vimgrep"
+if executable('rg')
+      let g:ackprg = "rg --column --vimgrep"
 endif
 
 
@@ -96,3 +96,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
+let g:syntastic_go_checkers = ['gometalinter']
+let g:syntastic_go_gometalinter_args = "--disable-all --enable=golint --enable=vetshadow --enable=ineffassign --enable=gas --enable=gocyclo --enable=goconst --enable=errcheck --enable-gc "
+let g:syntastic_python_checkers = ['pylama']
+let g:syntastic_python_pylama_args = "-i E,501"
