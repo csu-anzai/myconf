@@ -125,13 +125,13 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set foldenable
-set foldmethod=syntax
-set foldnestmax=3
-set foldlevel=1
-set foldlevelstart=20
-" Make sure that extra margin on left is removed
-set foldcolumn=0
+"set foldenable
+"set foldmethod=syntax
+"set foldnestmax=3
+"set foldlevel=1
+"set foldlevelstart=20
+"" Make sure that extra margin on left is removed
+"set foldcolumn=0
 
 " Enable Ctrl-A/Ctrl-X to work on octal and hex numbers, as well as characters
 set nrformats=octal,hex,alpha
@@ -220,6 +220,7 @@ set ai "Auto indent
 set si "Smart indent
 set nowrap "Don't Wrap lines (it is stupid)
 
+set showtabline=0
 "------------------------------------------------------------------------------
 " Visual mode related
 "------------------------------------------------------------------------------
@@ -240,7 +241,6 @@ map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
-map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -297,7 +297,7 @@ set viminfo^=%
 " Status line
 "------------------------------------------------------------------------------
 " Always show the status line
-set laststatus=2
+set laststatus=0
 
 " Format the status line
 " set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l

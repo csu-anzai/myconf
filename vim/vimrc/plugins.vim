@@ -4,7 +4,7 @@ Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify'
 Plug 'inkarkat/vim-mark'
@@ -12,8 +12,10 @@ Plug 'vim-scripts/ingo-library'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'easymotion/vim-easymotion'
+Plug 'plytophogy/vim-virtualenv'
 
-Plug 'roxma/nvim-completion-manager'
+Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -25,6 +27,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ajmwagar/vim-dues'
 
 Plug 'scrooloose/syntastic'
+
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -55,8 +62,6 @@ let NERDTreeChDirMode = 2
 let NERDTreeShowLineNumbers = 1
 let NERDTreeAutoCenter = 1
 
-" Open NERDTree on startup, when no file has been specified
-"autocmd VimEnter * if !argc() | NERDTree | endif
 
 " Locate file in hierarchy quickly
 map <leader>T :NERDTreeFind<cr>
@@ -79,9 +84,6 @@ if executable('rg')
 endif
 
 
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-
 let g:indentLine_char = '|'
 
 silent! call repeat#set("\<Plug>tpope/vim-surround", v:count)
@@ -97,6 +99,31 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_go_checkers = ['gometalinter']
-let g:syntastic_go_gometalinter_args = "--disable-all --enable=golint --enable=vetshadow --enable=ineffassign --enable=gas --enable=gocyclo --enable=goconst --enable=errcheck --enable-gc "
-let g:syntastic_python_checkers = ['pylama']
-let g:syntastic_python_pylama_args = "-i E,501"
+let g:syntastic_go_gometalinter_args = "--disable-all --enable=golint --enable=vetshadow  --enable=vet"
+let g:syntastic_python_checkers = ['flake8']
+
+
+nmap <F8> :TagbarToggle<CR>
+" ------------------------------------------------------------------------------
+" YouCompleteMe
+" ------------------------------------------------------------------------------
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_show_diagnostics_ui = 0
+nnoremap gd :YcmCompleter GoTo<CR>
+
+
+" ------------------------------------------------------------------------------
+" CtrlSpace
+" ------------------------------------------------------------------------------
+
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+let g:CtrlSpaceGlobCommand = 'rg -l ".*"'
+nnoremap <silent><C-p> :CtrlSpace O<CR>
+
+" ------------------------------------------------------------------------------
+" VimGO
+" ------------------------------------------------------------------------------
+let g:go_metalinter_autosave = 0
+let g:go_term_enabled = 0
+let g:go_term_mode = "split"
