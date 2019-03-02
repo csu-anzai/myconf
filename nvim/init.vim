@@ -81,6 +81,9 @@ set softtabstop=2
 set tabstop=2
 set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
+set foldenable
+set foldmethod=syntax
+set foldlevel=1
 
 " neovim specific settings
 
@@ -253,26 +256,26 @@ let g:bookmark_no_default_key_mappings = 1
 " Configure key mappings
 " This part also fixes conflicts with NERDTree
 function! BookmarkMapKeys()
-    nmap mm :BookmarkToggle<cr>
-    nmap mi :BookmarkAnnotate<cr>
-    nmap mn :BookmarkNext<cr>
-    nmap mp :BookmarkPrev<cr>
-    nmap ma :BookmarkShowAll<cr>
-    nmap mc :BookmarkClear<cr>
-    nmap mx :BookmarkClearAll<cr>
-    nmap mkk :BookmarkMoveUp
-    nmap mjj :BookmarkMoveDown
+    nmap <leader>mm :BookmarkToggle<cr>
+    nmap <leader>mi :BookmarkAnnotate<cr>
+    nmap <leader>mn :BookmarkNext<cr>
+    nmap <leader>mp :BookmarkPrev<cr>
+    nmap <leader>ma :BookmarkShowAll<cr>
+    nmap <leader>mc :BookmarkClear<cr>
+    nmap <leader>mx :BookmarkClearAll<cr>
+    nmap <leader>mkk :BookmarkMoveUp
+    nmap <leader>mjj :BookmarkMoveDown
 endfunction
 function! BookmarkUnmapKeys()
-    unmap mm
-    unmap mi
-    unmap mn
-    unmap mp
-    unmap ma
-    unmap mc
-    unmap mx
-    unmap mkk
-    unmap mjj
+    unmap <leader>mm
+    unmap <leader>mi
+    unmap <leader>mn
+    unmap <leader>mp
+    unmap <leader>ma
+    unmap <leader>mc
+    unmap <leader>mx
+    unmap <leader>mkk
+    unmap <leader>mjj
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
