@@ -173,7 +173,7 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-b> :Buffers<cr>
-nnoremap <c-l> :Vista finder<cr>
+nnoremap <c-x> :Vista finder<cr>
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
@@ -228,6 +228,11 @@ nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
 
 xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
+
+"----------------------------------------------
+" Plugin: 'mbbill/undotree'
+"----------------------------------------------
+nnoremap <F3> :UndotreeToggle<cr>
 
 "----------------------------------------------
 " Language: Golang

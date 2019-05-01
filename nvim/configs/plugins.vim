@@ -37,6 +37,7 @@ Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
 Plug 'liuchengxu/vista.vim'
+Plug 'mbbill/undotree'
 
 
 " Language support
