@@ -23,19 +23,18 @@ snippet     funcTest
 abbr        func Test...(t *testing.T) { ... }
 options     head
   func Test${1}(t *testing.T) {
-    tests := map[string]struct{
-      ${2:TARGET}
-    }{
-      "${3:TARGET:test case description}": {
-        ${4:TARGET}
-      },
-    }
+    ${2:TARGET}
+  }
 
-    for name, test := range tests {
-      t.Run(name, func(t *testing.T) {
-        ${5:TARGET}
-      })
-    }
+snippet     testSuite
+abbr        SuteTest
+options     head
+  type ${1:TARGET} struct {
+    suite.Suite
+  }
+
+  func Test${2}(t *testing.T) {
+    suite.Run(t, new($1))
   }
 
 snippet     funcbench
@@ -128,4 +127,3 @@ options     head
     Security
     Status
     Help
-
