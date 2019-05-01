@@ -14,7 +14,6 @@ Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding i
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
@@ -37,6 +36,7 @@ Plug 'wellle/targets.vim'
 Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
+Plug 'liuchengxu/vista.vim'
 
 
 " Language support
@@ -135,40 +135,6 @@ let g:airline_symbols.maxlinenr = '|'
 
 " Disable the CtrlP mapping, since we want to use FZF instead for <c-p>.
 let g:ctrlp_map = ''
-
-"----------------------------------------------
-" Plugin: 'majutsushi/tagbar'
-"----------------------------------------------
-
-" Language: Go
-" Tagbar configuration for Golang
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
@@ -320,3 +286,30 @@ let g:neomake_go_golangci_lint_maker = {
   \ 'errorformat':
   \ '%f:%l:%c: %m'
   \ }
+
+"----------------------------------------------
+" Plugin: liuchengxu/vista.vim
+"----------------------------------------------
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+
+" Set the executive for some filetypes explicitly. Use the explicit executive
+" instead of the default one for these filetypes when using `:Vista` without
+" specifying the executive.
+let g:vista_executive_for = {
+  \ 'go': 'vim_lsp',
+  \ 'python': 'vim_lsp',
+  \ }
+
+" Declare the command including the executable and options used to generate ctags output
+" for some certain filetypes.The file path will be appened to your custom command.
+" For example:
+let g:vista_ctags_cmd = {
+      \ 'go': 'gotags -sort -silent',
+      \ }
+
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']

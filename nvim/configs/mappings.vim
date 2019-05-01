@@ -173,12 +173,7 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-b> :Buffers<cr>
-
-"----------------------------------------------
-" Plugin: 'majutsushi/tagbar'
-"----------------------------------------------
-" Add shortcut for toggling the tag bar
-nnoremap <F3> :TagbarToggle<cr>
+nnoremap <c-l> :Vista finder<cr>
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
