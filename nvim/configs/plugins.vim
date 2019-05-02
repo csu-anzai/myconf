@@ -15,7 +15,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
-Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sbdchd/neoformat'
@@ -36,9 +35,9 @@ Plug 'wellle/targets.vim'
 Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
-Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
-
+Plug 'qpkorr/vim-bufkill'
+Plug 'majutsushi/tagbar'
 
 " Language support
 Plug 'cespare/vim-toml'                        " toml syntax highlighting
@@ -233,6 +232,12 @@ let g:jedi#documentation_command = ""
 let g:jedi#usages_command = ""
 let g:jedi#completions_command = ""
 let g:jedi#rename_command = ""
+"----------------------------------------------
+" Plugin 'junegunn/fzf.vim'
+"----------------------------------------------
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
 
 "----------------------------------------------
 " Language: Golang
@@ -287,30 +292,3 @@ let g:neomake_go_golangci_lint_maker = {
   \ 'errorformat':
   \ '%f:%l:%c: %m'
   \ }
-
-"----------------------------------------------
-" Plugin: liuchengxu/vista.vim
-"----------------------------------------------
-" Executive used when opening vista sidebar without specifying it.
-" See all the avaliable executives via `:echo g:vista#executives`.
-let g:vista_default_executive = 'ctags'
-
-" Set the executive for some filetypes explicitly. Use the explicit executive
-" instead of the default one for these filetypes when using `:Vista` without
-" specifying the executive.
-let g:vista_executive_for = {
-  \ 'go': 'vim_lsp',
-  \ 'python': 'vim_lsp',
-  \ }
-
-" Declare the command including the executable and options used to generate ctags output
-" for some certain filetypes.The file path will be appened to your custom command.
-" For example:
-let g:vista_ctags_cmd = {
-      \ 'go': 'gotags -sort -silent',
-      \ }
-
-" To enable fzf's preview window set g:vista_fzf_preview.
-" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
-" For example:
-let g:vista_fzf_preview = ['right:50%']

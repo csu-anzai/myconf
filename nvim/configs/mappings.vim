@@ -167,14 +167,9 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
-nnoremap <c-b> :Buffers<cr>
-nnoremap <leader>p :Vista finder<cr>
-
-"----------------------------------------------
-" Plugin: mileszs/ack.vim
-"----------------------------------------------
-" Open ack
-nnoremap <leader>a :Ack!<space>
+nnoremap <c-m> :Buffers<cr>
+nnoremap <leader>p :BTags<cr>
+nnoremap <leader>r :Rg<cr>
 
 "----------------------------------------------
 " Plugin: scrooloose/nerdtree
@@ -228,6 +223,11 @@ xmap P <plug>(SubversiveSubstitute)
 " Plugin: 'mbbill/undotree'
 "----------------------------------------------
 nnoremap <F3> :UndotreeToggle<cr>
+
+"----------------------------------------------
+" Plugin: 'majutsushi/tagbar'
+"----------------------------------------------
+nnoremap <F4> :TagbarToggle<cr>
 
 "----------------------------------------------
 " Language: Golang
