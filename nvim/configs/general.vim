@@ -33,8 +33,8 @@ set foldlevel=3
 set hidden
 set undofile
 set undodir=~/.vim/undo
-set undolevels=1000
-set undoreload=10000
+set undolevels=100
+set undoreload=100
 
 " neovim specific settings
 

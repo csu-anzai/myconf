@@ -108,11 +108,6 @@ vnoremap > >gv
 " Toggle paste mode on and off
 map <F2> :setlocal paste!<cr>
 
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
-
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -173,7 +168,7 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
 nnoremap <c-b> :Buffers<cr>
-nnoremap <c-x> :Vista finder<cr>
+nnoremap <leader>p :Vista finder<cr>
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
