@@ -167,7 +167,7 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
-nnoremap <c-m> :Buffers<cr>
+nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>p :BTags<cr>
 nnoremap <leader>r :Rg<cr>
 
