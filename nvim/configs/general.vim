@@ -19,6 +19,7 @@ set noswapfile                    " disable swapfile usage
 set nowrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
+set noshowmode
 set number                        " show number ruler
 set relativenumber                " show relative numbers in the ruler
 set ruler

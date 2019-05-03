@@ -295,6 +295,8 @@ let g:go_test_show_name = 1
 
 " Set whether the JSON tags should be snakecase or camelcase.
 let g:go_addtags_transform = "snakecase"
+" replace gocode
+let g:go_info_mode = 'gopls'
 
 " neomake configuration for Go.
 let g:neomake_go_enabled_makers = [ 'go', 'golangci-lint' ]
