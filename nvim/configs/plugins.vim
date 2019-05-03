@@ -5,18 +5,15 @@ Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 
 " General plugins
-Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
-Plug 'bling/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'neomake/neomake'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sebdah/vim-delve'
@@ -35,15 +32,15 @@ Plug 'svermeulen/vim-yoink'
 Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
 Plug 'mbbill/undotree'
-Plug 'qpkorr/vim-bufkill'
 Plug 'majutsushi/tagbar'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 
 " Language support
 Plug 'cespare/vim-toml'                        " toml syntax highlighting
 Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'fatih/vim-go'                            " Go support
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'davidhalter/jedi-vim'                     " Python support
 Plug 'deoplete-plugins/deoplete-jedi'                     " Python auto completion
@@ -106,25 +103,25 @@ let g:ale_python_black_options = '-l 120 -S'
 silent! call repeat#set("\<Plug>tpope/vim-surround", v:count)
 
 "----------------------------------------------
-" Plugin: bling/vim-airline
+" Plugin: itchyny/lightline.vim
 "----------------------------------------------
 
-" Enable top tabline.
-let g:airline#extensions#tabline#enabled = 1
-
-" Disable showing tabs in the tabline. This will ensure that the buffers are
-" what is shown in the tabline at all times.
-let g:airline#extensions#tabline#show_tabs = 0
-
-" Enable powerline fonts.
-let g:airline_powerline_fonts = 0
-
-" Explicitly define some symbols that did not work well for me in Linux.
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = '|'
-let g:airline_symbols.maxlinenr = '|'
+let g:lightline = {
+      \ 'colorscheme': 'deus',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+let g:lightline.tabline = {
+  \   'left': [ ['buffers'] ],
+  \   'right': [ ['close'] ]
+  \ }
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
