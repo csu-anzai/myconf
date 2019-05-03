@@ -222,12 +222,45 @@ let g:jedi#documentation_command = ""
 let g:jedi#usages_command = ""
 let g:jedi#completions_command = ""
 let g:jedi#rename_command = ""
+
 "----------------------------------------------
 " Plugin 'junegunn/fzf.vim'
 "----------------------------------------------
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
+"----------------------------------------------
+" Plugin: 'majutsushi/tagbar'
+"----------------------------------------------
+" Language: Go
+" Tagbar configuration for Golang
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "----------------------------------------------
 " Language: Golang
