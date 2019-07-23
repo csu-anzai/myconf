@@ -25,8 +25,11 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
+nnoremap <Left> :bprevious<cr>
+nnoremap <Right> :bnext<cr>
+nnoremap <Up> :BufOnly<cr>
+nnoremap <Down> :bd<cr>
+nnoremap <Tab> :e #<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
@@ -55,7 +58,6 @@ nnoremap <leader>h :split<cr>
 
 " Closing splits
 nnoremap <leader>q :close<cr>
-nnoremap <leader>bo :BufOnly<cr>
 nnoremap <leader>Q :q!<cr>
 
 " Fast saving
@@ -78,24 +80,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 vnoremap <silent> <leader>rr :call VisualSelection('replace', '')<CR>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
-map <leader>tj :tabnext<cr>
-map <leader>tk :tabprevious<cr>
-"
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -114,36 +98,11 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-
-"----------------------------------------------
-" Plugin: MattesGroeger/vim-bookmarks
-"----------------------------------------------
-" Configure key mappings
-" This part also fixes conflicts with NERDTree
-function! BookmarkMapKeys()
-    nmap <leader>mm :BookmarkToggle<cr>
-    nmap <leader>mi :BookmarkAnnotate<cr>
-    nmap <leader>mn :BookmarkNext<cr>
-    nmap <leader>mp :BookmarkPrev<cr>
-    nmap <leader>ma :BookmarkShowAll<cr>
-    nmap <leader>mc :BookmarkClear<cr>
-    nmap <leader>mx :BookmarkClearAll<cr>
-    nmap <leader>mkk :BookmarkMoveUp
-    nmap <leader>mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap <leader>mm
-    unmap <leader>mi
-    unmap <leader>mn
-    unmap <leader>mp
-    unmap <leader>ma
-    unmap <leader>mc
-    unmap <leader>mx
-    unmap <leader>mkk
-    unmap <leader>mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+" Move page ...
+nnoremap <C-Left> <C-b>
+nnoremap <C-Right> <C-f>
+nnoremap <C-Up> <C-u>
+nnoremap <C-Down> <C-d>
 
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
@@ -167,7 +126,8 @@ nmap <leader><leader>w <Plug>(easymotion-overwin-w)
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
-nnoremap <c-b> :Buffers<cr>
+nnoremap <C-b> :Buffers<cr>
+nnoremap <leader>m :Marks<cr>
 nnoremap <leader>p :BTags<cr>
 nnoremap <leader>r :Rg<cr>
 
@@ -244,10 +204,8 @@ au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
 au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 au FileType go nmap <leader>gt :GoDeclsDir<cr>
 au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>gd <Plug>(go-def)
 au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
 au FileType go nmap <leader>gdh <Plug>(go-def-split)
-au FileType go nmap <leader>gdt <Plug>(go-def-tab)
 au FileType go nmap <leader>gD <Plug>(go-doc)
 au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>gi :GoImplements<cr>

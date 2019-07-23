@@ -54,6 +54,8 @@ let mapleader = ','
 
 " Autosave buffers before leaving them
 autocmd BufLeave * silent! :wa
+autocmd BufLeave * silent! :delm z " remove move marks
+autocmd BufLeave * silent! :delm y
 
 
 "----------------------------------------------
@@ -63,6 +65,8 @@ set incsearch                     " move to match as you type the search query
 set hlsearch                      " disable search result highlighting
 
 set inccommand=split          " enables interactive search and replace
+set ignorecase
+set smartcase
 
 "----------------------------------------------
 " Splits

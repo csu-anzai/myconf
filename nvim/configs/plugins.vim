@@ -24,7 +24,7 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'w0rp/ale'
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'kshenoy/vim-signature'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'wellle/targets.vim'
@@ -44,23 +44,19 @@ Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'davidhalter/jedi-vim'                     " Python support
 Plug 'deoplete-plugins/deoplete-jedi'                     " Python auto completion
+Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
 
 " Colorschemes
-Plug 'ajmwagar/vim-dues'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
-
 "----------------------------------------------
-" Plugin: MattesGroeger/vim-bookmarks
+" Plug 'svermeulen/vim-cutlass'
 "----------------------------------------------
-" Auto save bookmarks
-let g:bookmark_auto_save = 1
-
-" Store the bookmarks in the projects
-let g:bookmark_save_per_working_dir = 1
-
-" Disable the default key mappings
-let g:bookmark_no_default_key_mappings = 1
+nnoremap <DEL> d
+xnoremap <DEL> d
+nnoremap <DEL><DEL> dd
 
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
@@ -83,19 +79,20 @@ endfunction
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['goimports'],
-\   'python': ['black'],
+\   'python': ['autopep8'],
+\   'rust': ['rustfmt'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_linters = { 'go': ['golangci-lint'], 'python': ['flake8'] }
 let g:ale_go_golangci_lint_options='-p bugs -p unused -p style'
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_goimports_options = '-local gordon'
+let g:ale_python_autopep8_options = '--max-line-length 120'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_python_black_options = '-l 120 -S'
 
 "----------------------------------------------
 " Plugin: tpope/vim-repeat
@@ -107,7 +104,7 @@ silent! call repeat#set("\<Plug>tpope/vim-surround", v:count)
 "----------------------------------------------
 
 let g:lightline = {
-      \ 'colorscheme': 'deus',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
