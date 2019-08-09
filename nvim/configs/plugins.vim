@@ -33,8 +33,6 @@ Plug 'svermeulen/vim-cutlass'
 Plug 'svermeulen/vim-subversive'
 Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
 
 " Language support
 Plug 'cespare/vim-toml'                        " toml syntax highlighting
@@ -46,10 +44,26 @@ Plug 'davidhalter/jedi-vim'                     " Python support
 Plug 'deoplete-plugins/deoplete-jedi'                     " Python auto completion
 Plug 'rust-lang/rust.vim'
 Plug 'sebastianmarkow/deoplete-rust'
+Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
+" User Interface
+Plug 'tpope/vim-obsession'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'sainnhe/artify.vim'
+Plug 'itchyny/vim-gitbranch'
+Plug 'macthecadillac/lightline-gitdiff'
+Plug 'maximbaz/lightline-ale'
+Plug 'Palpatineli/lightline-lsc-nvim'
+Plug 'skywind3000/quickmenu.vim'
+Plug 'godlygeek/tabular'
+
+"Plug 'sainnhe/tmuxline.vim', {'branch': 'dev'}
+"
+"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 call plug#end()
 "----------------------------------------------
 " Plug 'svermeulen/vim-cutlass'
@@ -72,7 +86,10 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
-
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })
 "----------------------------------------------
 " Plugin: w0rp/ale
 "----------------------------------------------
@@ -98,27 +115,6 @@ let g:ale_set_quickfix = 0
 " Plugin: tpope/vim-repeat
 "----------------------------------------------
 silent! call repeat#set("\<Plug>tpope/vim-surround", v:count)
-
-"----------------------------------------------
-" Plugin: itchyny/lightline.vim
-"----------------------------------------------
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-let g:lightline.tabline = {
-  \   'left': [ ['buffers'] ],
-  \   'right': [ ['close'] ]
-  \ }
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
@@ -224,6 +220,28 @@ let g:jedi#rename_command = ""
 let g:fzf_buffers_jump = 1
 
 "----------------------------------------------
+" Plugin: 'skywind3000/quickmenu.vim'
+"----------------------------------------------
+" enable cursorline (L) and cmdline help (H)
+let g:quickmenu_options = "LH"
+
+" clear all the items
+call g:quickmenu#reset()
+
+" bind to F12
+noremap <silent><F12> :call quickmenu#toggle(0)<cr>
+
+call g:quickmenu#append('# Git', '')
+call g:quickmenu#append('Status', 'Gstatus', 'git status')
+call g:quickmenu#append('Blame', 'Gblame', 'git status')
+
+call g:quickmenu#append('# Misc', '')
+call g:quickmenu#append('History', 'UndotreeToggle', 'history')
+call g:quickmenu#append('Tagbar', 'TagbarToggle', 'tagbar')
+call g:quickmenu#append('Toogle paste', 'setlocal paste!', 'toogle paste')
+
+
+"----------------------------------------------
 " Plugin: 'majutsushi/tagbar'
 "----------------------------------------------
 " Language: Go
@@ -279,7 +297,7 @@ let g:go_highlight_extra_types = 1
 let g:go_echo_command_info = 1
 
 " Show type information
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 
 " Highlight variable uses
 let g:go_auto_sameids = 0

@@ -30,7 +30,7 @@ set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
 set foldenable
 set foldmethod=syntax
-set foldlevel=3
+set foldlevel=5
 set hidden
 set undofile
 set undodir=~/.vim/undo

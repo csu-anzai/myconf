@@ -89,9 +89,6 @@ map <C-l> <C-W>l
 vnoremap < <gv
 vnoremap > >gv
 
-" Toggle paste mode on and off
-map <F2> :setlocal paste!<cr>
-
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -180,16 +177,6 @@ xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
 
 "----------------------------------------------
-" Plugin: 'mbbill/undotree'
-"----------------------------------------------
-nnoremap <F3> :UndotreeToggle<cr>
-
-"----------------------------------------------
-" Plugin: 'majutsushi/tagbar'
-"----------------------------------------------
-nnoremap <F4> :TagbarToggle<cr>
-
-"----------------------------------------------
 " Language: Golang
 "----------------------------------------------
 
@@ -210,6 +197,7 @@ au FileType go nmap <leader>gD <Plug>(go-doc)
 au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>gi :GoImplements<cr>
 au FileType go nmap <leader>gh :GoSameIdsToggle<cr>
+au FileType go nmap <leader>gn :GoInfo<cr>
 
 "----------------------------------------------
 " Language: Python
