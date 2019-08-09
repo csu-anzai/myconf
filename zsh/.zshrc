@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
+ZSH_CUSTOM=$HOME/myconf/zsh/custom
 export ZSH=/home/aivanov/.oh-my-zsh
-export ZSH_CUSTOM=/home/aivanov/myconf/zsh/custom
 export ZSH_TMUX_AUTOSTART=true
 export DISABLE_AUTO_UPDATE=true
 export FZF_BASE=/home/aivanov/.fzf
