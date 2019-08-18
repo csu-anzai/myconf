@@ -17,7 +17,6 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sebdah/vim-delve'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -58,7 +57,6 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'macthecadillac/lightline-gitdiff'
 Plug 'maximbaz/lightline-ale'
 Plug 'Palpatineli/lightline-lsc-nvim'
-Plug 'skywind3000/quickmenu.vim'
 Plug 'godlygeek/tabular'
 
 "Plug 'sainnhe/tmuxline.vim', {'branch': 'dev'}
@@ -78,14 +76,6 @@ nnoremap <DEL><DEL> dd
 " Enable deoplete on startup
 let g:deoplete#enable_at_startup = 1
 
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 500,
 \ 'max_num_results': 20,
@@ -181,13 +171,6 @@ let g:neosnippet#snippets_directory='~/myconf/nvim/snippets'
 
 
 "----------------------------------------------
-" Plugin: 'terryma/vim-multiple-cursors'
-"----------------------------------------------
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_skip_key='<C-b>'
-let g:multi_cursor_quit_key='<Esc>'
-
-"----------------------------------------------
 " Plugin: zchee/deoplete-go
 "----------------------------------------------
 " Enable completing of go pointers
@@ -218,28 +201,6 @@ let g:jedi#rename_command = ""
 "----------------------------------------------
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
-
-"----------------------------------------------
-" Plugin: 'skywind3000/quickmenu.vim'
-"----------------------------------------------
-" enable cursorline (L) and cmdline help (H)
-let g:quickmenu_options = "LH"
-
-" clear all the items
-call g:quickmenu#reset()
-
-" bind to F12
-noremap <silent><F12> :call quickmenu#toggle(0)<cr>
-
-call g:quickmenu#append('# Git', '')
-call g:quickmenu#append('Status', 'Gstatus', 'git status')
-call g:quickmenu#append('Blame', 'Gblame', 'git status')
-
-call g:quickmenu#append('# Misc', '')
-call g:quickmenu#append('History', 'UndotreeToggle', 'history')
-call g:quickmenu#append('Tagbar', 'TagbarToggle', 'tagbar')
-call g:quickmenu#append('Toogle paste', 'setlocal paste!', 'toogle paste')
-
 
 "----------------------------------------------
 " Plugin: 'majutsushi/tagbar'

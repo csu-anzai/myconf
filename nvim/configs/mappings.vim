@@ -89,6 +89,9 @@ map <C-l> <C-W>l
 vnoremap < <gv
 vnoremap > >gv
 
+" Toggle paste mode on and off
+map <F2> :setlocal paste!<cr>
+
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
