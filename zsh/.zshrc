@@ -110,3 +110,5 @@ source /usr/bin/virtualenvwrapper.sh
 
 alias zshreload="source ~/.zshrc"
 alias shasum="sha1sum"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
