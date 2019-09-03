@@ -5,7 +5,7 @@ Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 
 " General plugins
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'editorconfig/editorconfig-vim'
@@ -38,11 +38,7 @@ Plug 'cespare/vim-toml'                        " toml syntax highlighting
 Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'fatih/vim-go'                            " Go support
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'davidhalter/jedi-vim'                     " Python support
-Plug 'deoplete-plugins/deoplete-jedi'                     " Python auto completion
 Plug 'rust-lang/rust.vim'
-Plug 'sebastianmarkow/deoplete-rust'
 Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
@@ -61,7 +57,6 @@ Plug 'godlygeek/tabular'
 
 "Plug 'sainnhe/tmuxline.vim', {'branch': 'dev'}
 "
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 call plug#end()
 "----------------------------------------------
 " Plug 'svermeulen/vim-cutlass'
@@ -71,15 +66,21 @@ xnoremap <DEL> d
 nnoremap <DEL><DEL> dd
 
 "----------------------------------------------
-" Plugin: Shougo/deoplete.nvim
+" Plugin: neoclide/coc.nvim
 "----------------------------------------------
-" Enable deoplete on startup
-let g:deoplete#enable_at_startup = 1
 
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 500,
-\ 'max_num_results': 20,
-\ })
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 "----------------------------------------------
 " Plugin: w0rp/ale
 "----------------------------------------------
@@ -171,30 +172,10 @@ let g:neosnippet#snippets_directory='~/myconf/nvim/snippets'
 
 
 "----------------------------------------------
-" Plugin: zchee/deoplete-go
-"----------------------------------------------
-" Enable completing of go pointers
-let g:deoplete#sources#go#pointer = 1
-
-" Enable autocomplete of unimported packages
-let g:deoplete#sources#go#unimported_packages = 0
-"----------------------------------------------
 " Plugin: svermeulen/vim-yoink
 "----------------------------------------------
 
 let g:yoinkIncludeDeleteOperations = 1
-
-"----------------------------------------------
-" Plugin: davidhalter/jedi-vim
-"----------------------------------------------
-let g:jedi#completions_enabled = 0
-let g:jedi#goto_command = ""
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = ""
-let g:jedi#usages_command = ""
-let g:jedi#completions_command = ""
-let g:jedi#rename_command = ""
 
 "----------------------------------------------
 " Plugin 'junegunn/fzf.vim'
